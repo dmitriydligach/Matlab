@@ -1,28 +1,27 @@
 % plot accuracy against labeled training data size
 
-maxsize = -1;
-step = 10;
+d = load('/Users/Dima/Boston/Out/ms.txt');
+
+hold
 
 % column 1 - training set size
-% column 2 - no unlabled data (baseline)
-% column 3 - 500 unlabeled examples
-% column 4 - 1000 unlabeled examples
-% column 5 - 3000 unlabeled examples
-% column 6 - 5000 unlabeled examples
-data = load('/Users/Dima/Boston/Out/in');
+% column 2 - 0 unlabeled examples (baseline)
+% column 4 - 500 unlabeled examples
+% column 6 - 1000 unlabeled examples
+% column 8 - 3000 unlabeled examples
 
-plot(data(:, 1), data(:, 3), 'g', ...  % 500 unlabeled
-     data(:, 1), data(:, 4), 'c', ...  % 1000 unlabeled
-     data(:, 1), data(:, 5), 'm', ...  % 3000 unlabeled
-     data(:, 1), data(:, 6), 'y', ...  % 5000 unlabeled
-     data(:, 1), data(:, 2), 'b')      % baseline
+% errorbar(d(:, 1), d(:, 4), d(:, 5), 'g')
+% errorbar(d(:, 1), d(:, 6), d(:, 7), 'c')
+% errorbar(d(:, 1), d(:, 8), d(:, 9), 'm')
 
-% if maxsize > 0
-%   plot(data(1:maxsize/step, 1), data(1:maxsize/step, 2:end));
-% else
-%   plot(data(1:end, 1), data(1:end, 2:end));
-% end
+plot(d(:, 1), d(:, 4), 'g')
+plot(d(:, 1), d(:, 6), 'c')
+plot(d(:, 1), d(:, 8), 'm')
+
+% plot(d(:, 1), d(:, 2), 'b')
+errorbar(d(:, 1), d(:, 2), d(:, 3), 'b')
 
 xlabel('Training set size')
 ylabel('Classification Accuracy')
-legend('500', '1000', '3000', '5000', 'labeled only', 4)
+
+legend('labeled only', '500', '1000', '3000', 4)
