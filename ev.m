@@ -1,6 +1,6 @@
 % plot accuracy against labeled training data size
 
-d = load('/Users/Dima/Boston/Out/ms.txt');
+d = load('/Users/Dima/Boston/Out/cd.txt');
 
 hold
 
@@ -18,10 +18,10 @@ plot(d(:, 1), d(:, 4), 'g')
 plot(d(:, 1), d(:, 6), 'c')
 plot(d(:, 1), d(:, 8), 'm')
 
-% plot(d(:, 1), d(:, 2), 'b')
-errorbar(d(:, 1), d(:, 2), d(:, 3), 'b')
+plot(d(:, 1), d(:, 2), 'b')
+% errorbar(d(:, 1), d(:, 2), d(:, 3), 'b')
 
 xlabel('Training set size')
 ylabel('Classification Accuracy')
 
-legend('labeled only', '500', '1000', '3000', 4)
+legend('500', '1000', '3000', 'labeled only', 4)
